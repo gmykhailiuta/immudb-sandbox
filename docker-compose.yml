@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+
+  immudb:
+    image: codenotary/immudb:1.2-almalinux-8-minimal
+    ports: [ 3322, 9497 ]
+
+  app:
+    build:
+      context: .
+    image: app:${VERSION:-latest}
+    environment:
+      - "IMMU_USER=${IMMU_USER:-immudb}"
+      - "IMMU_PASSWORD=${IMMU_PASSWORD:-immudb}"
+      - "IMMU_ENDPOINT=immudb:3322"
+    depends_on:
+      - "immudb"
+
+networks:
+  default:

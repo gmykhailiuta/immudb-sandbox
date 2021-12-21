@@ -16,3 +16,8 @@ Inserts 1000 key/value pairs into DB.
 docker-compose up
 ```
 
+## TODO
+
+1. Tests. Although the code reads the key value just after it has stored one, it can't be considered as a full-featured test.
+2. Immudb replication/
+3. Add persistent storage
